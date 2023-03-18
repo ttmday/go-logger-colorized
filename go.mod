@@ -1,3 +1,3 @@
-module github.com/ttmday/go-logger-color
+module github.com/ttmday/go-logger-colorized
 
 go 1.19
