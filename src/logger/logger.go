@@ -14,22 +14,40 @@ var (
 	yellow    = "\033[33m"
 )
 
-func Success() *log.Logger {
-	return log.New(os.Stdout, string(green)+"SUCCESS: ", log.Ldate|log.Ltime|log.Lshortfile)
+func Success() *loggerSuccess {
+	logger := log.New(os.Stdout, string(green)+"SUCCESS: ", log.Ldate|log.Ltime|log.Lshortfile)
+
+	return &loggerSuccess{
+		logger: logger,
+	}
 }
 
-func Info() *log.Logger {
-	return log.New(os.Stdout, string(gray)+"INFO: ", log.Ldate|log.Ltime|log.Lshortfile)
+func Info() *loggerInfo {
+	logger := log.New(os.Stdout, string(gray)+"INFO: ", log.Ldate|log.Ltime|log.Lshortfile)
+
+	return &loggerInfo{
+		logger: logger,
+	}
 }
 
-func Warning() *log.Logger {
-	return log.New(os.Stdout, string(yellow)+"WARNING: ", log.Ldate|log.Ltime|log.Lshortfile)
+func Warning() *loggerWarning {
+	logger := log.New(os.Stdout, string(yellow)+"WARNING: ", log.Ldate|log.Ltime|log.Lshortfile)
+
+	return &loggerWarning{
+		logger: logger,
+	}
 }
 
-func Error() *log.Logger {
-	return log.New(os.Stdout, string(red)+"ERROR: ", log.Ldate|log.Ltime|log.Lshortfile)
+func Error() *loggerError {
+	logger := log.New(os.Stdout, string(red)+"ERROR: ", log.Ldate|log.Ltime|log.Lshortfile)
+	return &loggerError{
+		logger: logger,
+	}
 }
 
-func Debug() *log.Logger {
-	return log.New(os.Stdout, string(brightRed)+"DEBUG: ", log.Ldate|log.Ltime|log.Lshortfile)
+func Debug() *loggerDebug {
+	logger := log.New(os.Stdout, string(brightRed)+"DEBUG: ", log.Ldate|log.Ltime|log.Lshortfile)
+	return &loggerDebug{
+		logger: logger,
+	}
 }
